@@ -1,0 +1,73 @@
+version: '3'
+services:
+    redis:
+    image: redis
+    container_name: redis
+    ports:
+      - "6379:6379"
+    networks:
+      - risknet
+
+#  TODO: Completar por el estudiante (Nivel 5)
+#  db:
+#    image: postgres:latest
+#    container_name: db
+#    environment:
+#      - POSTGRES_USER=postgres
+#      - POSTGRES_PASSWORD=postgres
+#      - POSTGRES_DB=alerts
+#    networks:
+#      - risknet
+#    ports:
+#      - "5432:5432"
+
+#  TODO: Completar por el estudiante (Niveles 6 y 7)
+#  alert:
+#    image: alert
+#    build:
+#      context: alert_app
+#      dockerfile: Dockerfile
+#    container_name: alert
+#    environment:
+#      - ALERT_THRESHOLD=
+#      - DATABASE_HOST=
+#      - DATABASE_PORT=
+#      - DATABASE_USER=
+#      - DATABASE_PASSWORD=
+#      - DATABASE_NAME=alerts
+#      - RISK_BUCKET_NAME=
+#      - PUBSUB_TOPIC=projects/aso-git/topics/risks
+#      - PUBSUB_SUBSCRIPTION=projects/aso-git/subscriptions/new_risk
+#      - GOOGLE_CLOUD_PROJECT=aso-git
+#    volumes:
+#      - ./alert_app:/app
+#    networks:
+#      - risknet
+
+# TODO: Completar por el estudiante (Niveles 3, 4 y 5)
+    risk:
+    image: risk
+    build:
+      context: risk_app
+      dockerfile: Dockerfile
+    container_name: risk
+       environment:
+      - PORT=5000
+      - REDISPORT=6379
+      - REDISHOST=redis
+      - REDISPORT=6379
+      - IS_REDIS_AVAILABLE=False
+      - DEBUG=True
+      - GOOGLE_CLOUD_PROJECT=proyecto0-398715
+    ports:
+      - "80:5000"
+    volumes:
+      - ./risk_app:/app
+    networks:
+      - risknet
+    depends_on:
+      - redis
+
+networks:
+  risknet:
+    name: risknet
