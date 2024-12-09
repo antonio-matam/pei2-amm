@@ -3,7 +3,7 @@ import os
 
 APP = flask.Flask(__name__)
 
-@APP.route('/')
+@APP.route('/author')
 def index():
 
     userinfo = {
