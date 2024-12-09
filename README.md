@@ -8,9 +8,9 @@ Este repositorio se utilizará como enunciado y como entregable para esta segund
 
 La primera actividad a realizar será rellenar los siguientes campos con tu nombre, apellidos y dirección de email.
 
-- Nombre y apellidos: Ilias Chentouf El Jaznayy
-- email: ilias.chentouf@edu.uah.es
-- URL perfil público de Google Skillboost: https://www.cloudskillsboost.google/public_profiles/c220996f-9b71-4389-8843-5750fde34a22
+- Nombre y apellidos: Antonio Mata Marco
+- email: antonio.matam@edu.uah.es
+- URL perfil público de Google Skillboost: 
 
 A continuación debes marcar la casilla que viene a continuación. Este documento está redactado utilizando el lenguaje de marcado Markdown, por lo tanto, las casillas de verificación se representan mediante la apertura y cierre de los corchetes, separados a su vez por un espacio en blanco, "[ ]". Para marcar una casilla debes sustituir ese espacio en blanco con una X mayúscula, así "[X]".
 
@@ -178,11 +178,11 @@ Complete, ajuste y corrija el código proporcionado en la aplicación `alert_app
 ## `Nivel 1` Servicio de Autor  💰1
 
 ### Comprobaciones previas
-- [X] He realizado las pruebas oportunas y he verificado que todo funciona según lo especificado en el enunciado.
-- [X] He añadido (`commit`) todos los cambios a mi repositorio, los he subido a git-hub (`push`), y he verificado en la web de `git-hub` que los cambios se han reflejado correctamente.
+- [] He realizado las pruebas oportunas y he verificado que todo funciona según lo especificado en el enunciado.
+- [] He añadido (`commit`) todos los cambios a mi repositorio, los he subido a git-hub (`push`), y he verificado en la web de `git-hub` que los cambios se han reflejado correctamente.
 ### Entrega
-- [X] URL de la imagen construida en docker-hub: https://hub.docker.com/layers/ilias3d1/pei2/latest/images/sha256-7c2cbd1be7ce69b916bfcca67ca9d37e30de1ab4b06a2501656da081b7658dda?context=repo
-- [X] He añadido (`commit`) todos los cambios a mi repositorio, los he subido a git-hub (`push`), y he verificado en la web de `git-hub` que los cambios se han reflejado correctamente.
+- [] URL de la imagen construida en docker-hub: https://hub.docker.com/layers/ilias3d1/pei2/latest/images/sha256-7c2cbd1be7ce69b916bfcca67ca9d37e30de1ab4b06a2501656da081b7658dda?context=repo
+- [] He añadido (`commit`) todos los cambios a mi repositorio, los he subido a git-hub (`push`), y he verificado en la web de `git-hub` que los cambios se han reflejado correctamente.
 ### Prueba
 - Crear un contenedor a partir de la imagen generada y publicada.
 - Verificar que La llamada `curl localhost:PORT/author` devuelve el JSON esperado
@@ -190,11 +190,11 @@ Complete, ajuste y corrija el código proporcionado en la aplicación `alert_app
 ## `Nivel 2` Servicio de Autor corriendo el Cloud Run  💰1.5
 
 ### Comprobaciones previas
-- [X] He configurado Cloud Run para ejecutar en él la aplicación WEB construida en el apartado anterior.
-- [X] He realizado las pruebas oportunas y he verificado que todo funciona según lo especificado en el enunciado.
+- [] He configurado Cloud Run para ejecutar en él la aplicación WEB construida en el apartado anterior.
+- [] He realizado las pruebas oportunas y he verificado que todo funciona según lo especificado en el enunciado.
 ### Entrega
-- [X] URL del servicio en Cloud Run: https://cuestion2-coudbfqksa-uc.a.run.app
-- [X] He añadido (`commit`) todos los cambios a mi repositorio, los he subido a git-hub (`push`), y he verificado en la web de 
+- [] URL del servicio en Cloud Run: https://cuestion2-coudbfqksa-uc.a.run.app
+- [] He añadido (`commit`) todos los cambios a mi repositorio, los he subido a git-hub (`push`), y he verificado en la web de 
   `git-hub` que los cambios se han reflejado correctamente.
 ### Prueba
 - La llamada `curl URL_DEL_SERVICIO/author` devuelve el JSON esperado
