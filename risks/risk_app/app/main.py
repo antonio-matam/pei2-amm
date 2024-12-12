@@ -30,7 +30,10 @@ def create_risk(risk_id: uuid.UUID):
 @app.route('/risk/<risk_id>', methods=['GET'])
 def retrieve_risk(risk_id):
     response = get_risk(risk_id)
-    return jsonify(response)
+    if response: #Si se encuentra el riesgo
+        return jsonify(response), 200
+    else:  #Si no se encuentra el riesgo
+        return jsonify({"error": "Risk not found"}), 404
 
 
 if __name__ == '__main__':

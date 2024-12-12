@@ -1,60 +1,45 @@
 """Module to handle risk operations"""
+from flask import Flask, jsonify, request, make_response
 import memorystore
 import uuid
 import cloudstorage
 import json
+import redis
 
-@app.route('/product', methods=['GET', 'POST'])
+app = Flask(__name__)
+redis_client=redis.StrictRedis(host="redis", port=6379,decode_responses=True)
+
+@app.route('/risk/<risk_id>', methods=['GET', 'POST'])
 def get_risk(risk_id: uuid.UUID):
     if request.method == 'GET':
-        response = get_products()
-        return jsonify(response)
+        #Recuperar el dato desde Redis
+        data = redis_client.get(str(risk_id))
+        if data:
+            #Si el dato existe, deserializarlo y devolverlo
+            return json.loads(data)
+        else:
+            #Si no existe, devuelve un error 404
+            return None
     
     if request.method == 'POST':
+        #Procesar una solicitud POST para agregar un riesgo
         data = request.get_json()
-        data['risk_id'] = data['risk_id'] if 'risk_id' in data else None
+        data['risk_id'] = str(risk_id)
+        #Guardar el riesgo en Redis con un tiempo de expiración de 10 segundos
+        redis_client.setex(str(risk_id),10, json.dumps(data))
         create_product(
             data['city_id'],
             data['city_name'],
             data['risk'],
             data['level'])
-        return jsonify({ "status": "ok"})
-
-    """
-    Esta función devuelve el riesgo asociado a un identificador.
-
-    En los niveles 3 y 4 la consulta se realiza en la base de datos in-memory, ya sera Redis o GCP Memory Storage
-
-    :param risk_id: Identificador del riesgo a consultar
-    :return:
-    {
-        "city": "Alcalá de Henares",
-        "risk": "Severe snowfall",
-        "level": 6
-    }
-    """
-
-    # Niveles 3,4: Consulta en la base de datos in-memory haciendo uso del módulo `memorystore`
-
-    # Nivel 5: consultar la base de datos in-memory y, si el elemento no se encontrara allí, buscarlo en
-    # GCP storage haciendo uso del módulo `cloudstorage`. Si se encontrara allí añadirlo a la base de datos in-memory
-    # para que haga las veces de caché. Dependiendo de si el riesgo se encontrara o no en la base de datos in-memory
-    # (cache) añada a la respuesta una clave que refleje este hecho haciendo
-    # `return {"cache": False, **risk_description}` si el dato no estaba en cache, y
-    # return {"cache": True, **risk_description} en caso contrario.
-
-    return None
-
-
+        return jsonify({ "status": "ok"}), 201
 
 
 def add_risk(risk_id: uuid.UUID, **risk_description):
-    risk= None
-
-    # Niveles 3 y 4
-    # Almacenar el riesgo en la base de datos in-memory haciendo `risk = memorystore.save_risk ....`
-
-    # Nivel 5
-    # Almacenar el riesgo en cloud storage haciendo `cloudstorage.upload_blob(...)`
-
-    return risk
+    """
+    Almacenar el riesgo en Redis con una expiración de 10 segundos.
+    """
+    #Convertir el risk_id a string y guardar los datos en Redis
+    redis_client.setex(str(risk_id), 10, json.dumps(risk_description))
+    #Devolver el riesgo
+    return {"city_id": str(risk_id), **risk_description}
