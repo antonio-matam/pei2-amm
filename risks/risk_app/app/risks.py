@@ -1,5 +1,5 @@
 """Module to handle risk operations"""
-from flask import Flask, jsonify, request, make_response
+from flask import Flask, jsonify, request
 import memorystore
 import uuid
 import cloudstorage
@@ -15,11 +15,13 @@ def get_risk(risk_id: uuid.UUID):
         #Recuperar el dato desde Redis
         data = redis_client.get(str(risk_id))
         if data:
-            #Si el dato existe, deserializarlo y devolverlo
-            return json.loads(data)
+            #Si el dato existe, deserializarlo y devolverlo junto con el city_id
+            response = json.loads(data)
+            response["city_id"] = str(risk_id)  # Añade el city_id al diccionario
+            return response
         else:
             #Si no existe, devuelve un error 404
-            return None
+            return {"error": "Risk not found"}
     
     if request.method == 'POST':
         #Procesar una solicitud POST para agregar un riesgo
