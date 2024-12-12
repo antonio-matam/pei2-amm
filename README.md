@@ -178,10 +178,10 @@ Complete, ajuste y corrija el código proporcionado en la aplicación `alert_app
 ## `Nivel 1` Servicio de Autor  💰1
 
 ### Comprobaciones previas
-- [] He realizado las pruebas oportunas y he verificado que todo funciona según lo especificado en el enunciado.
-- [] He añadido (`commit`) todos los cambios a mi repositorio, los he subido a git-hub (`push`), y he verificado en la web de `git-hub` que los cambios se han reflejado correctamente.
+- [X] He realizado las pruebas oportunas y he verificado que todo funciona según lo especificado en el enunciado.
+- [X] He añadido (`commit`) todos los cambios a mi repositorio, los he subido a git-hub (`push`), y he verificado en la web de `git-hub` que los cambios se han reflejado correctamente.
 ### Entrega
-- [] URL de la imagen construida en docker-hub: https://hub.docker.com/layers/ilias3d1/pei2/latest/images/sha256-7c2cbd1be7ce69b916bfcca67ca9d37e30de1ab4b06a2501656da081b7658dda?context=repo
+- [X] URL de la imagen construida en docker-hub: https://hub.docker.com/layers/ilias3d1/pei2/latest/images/sha256-7c2cbd1be7ce69b916bfcca67ca9d37e30de1ab4b06a2501656da081b7658dda?context=repo
 - [] He añadido (`commit`) todos los cambios a mi repositorio, los he subido a git-hub (`push`), y he verificado en la web de `git-hub` que los cambios se han reflejado correctamente.
 ### Prueba
 - Crear un contenedor a partir de la imagen generada y publicada.
@@ -190,21 +190,21 @@ Complete, ajuste y corrija el código proporcionado en la aplicación `alert_app
 ## `Nivel 2` Servicio de Autor corriendo el Cloud Run  💰1.5
 
 ### Comprobaciones previas
-- [] He configurado Cloud Run para ejecutar en él la aplicación WEB construida en el apartado anterior.
-- [] He realizado las pruebas oportunas y he verificado que todo funciona según lo especificado en el enunciado.
+- [X] He configurado Cloud Run para ejecutar en él la aplicación WEB construida en el apartado anterior.
+- [X] He realizado las pruebas oportunas y he verificado que todo funciona según lo especificado en el enunciado.
 ### Entrega
-- [] URL del servicio en Cloud Run: https://cuestion2-coudbfqksa-uc.a.run.app
-- [] He añadido (`commit`) todos los cambios a mi repositorio, los he subido a git-hub (`push`), y he verificado en la web de 
+- [X] URL del servicio en Cloud Run: https://cuestion2-coudbfqksa-uc.a.run.app
+- [X] He añadido (`commit`) todos los cambios a mi repositorio, los he subido a git-hub (`push`), y he verificado en la web de 
   `git-hub` que los cambios se han reflejado correctamente.
 ### Prueba
 - La llamada `curl URL_DEL_SERVICIO/author` devuelve el JSON esperado
 
 ## `Nivel 3` Gestión de alertas persistidas en Redis. 💰1.5
 ### Comprobaciones previas
-- [ ] He configurado docker-compose para ejecutar en local la aplicación WEB con sus nuevos endpoints.
-- [ ] He hecho los ajustes necesarios en el código para asegurar que funciona según lo especificado.
+- [X] He configurado docker-compose para ejecutar en local la aplicación WEB con sus nuevos endpoints.
+- [X] He hecho los ajustes necesarios en el código para asegurar que funciona según lo especificado.
 ### Entrega
-- [ ] He añadido (`commit`) todos los cambios a mi repositorio, los he subido a git-hub (`push`), y he verificado en la web de
+- [X] He añadido (`commit`) todos los cambios a mi repositorio, los he subido a git-hub (`push`), y he verificado en la web de
   `git-hub` que los cambios se han reflejado correctamente.
 ```
  --- A realizar por el estudiante ---
